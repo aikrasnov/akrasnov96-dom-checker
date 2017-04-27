@@ -53,7 +53,7 @@ const {url} = options;
 const {depth} = options;
 const {show} = options;
 
-const adc = async (localUrl, localDepth, localShow) => {
+const adc = (localUrl, localDepth, localShow) => {
     return new Promise((resolve, reject) => {
         jsdom.env(localUrl, (err, window) => {
             if (err) {
@@ -98,7 +98,9 @@ if (url && depth) {
     }).catch(() => {
         process.exit(1);
     });
+} else if (url === null || depth === null) {
+    console.log(`given --url: ${url}, --depth:${depth}`);
+    process.exit(3);
 }
-
 
 module.exports = adc;

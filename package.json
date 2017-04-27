@@ -1,6 +1,6 @@
 {
   "name": "akrasnov96-dom-checker",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Измеритель глубины dom'a",
   "main": "index.js",
   "scripts": {
