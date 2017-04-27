@@ -1,0 +1,31 @@
+{
+  "name": "akrasnov96-dom-checker",
+  "version": "1.0.6",
+  "description": "Измеритель глубины dom'a",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "test_repo"
+  },
+  "bin": {
+    "adc": "./adc.js"
+  },
+  "keywords": [
+    "dom",
+    "check",
+    "depth"
+  ],
+  "author": "akrasnov96",
+  "license": "MIT",
+  "dependencies": {
+    "command-line-args": "^4.0.3",
+    "command-line-usage": "^4.0.0",
+    "jsdom": "^9.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}
