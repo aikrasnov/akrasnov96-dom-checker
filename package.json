@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "test_repo"
+    "url": "https://github.com/aikrasnov/akrasnov96-dom-checker"
   },
   "bin": {
     "adc": "./adc.js"
