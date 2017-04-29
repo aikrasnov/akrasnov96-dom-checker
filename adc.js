@@ -9,6 +9,7 @@ const adc = (localUrl, localDepth, localShow) => {
             reject(new Error(`invalid url ${localUrl}`));
         }
         jsdom.env(localUrl, (err, window) => {
+            localDepth = new Number(localDepth);
             if (err) {
                 throw err;
             }

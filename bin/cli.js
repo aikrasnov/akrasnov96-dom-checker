@@ -36,7 +36,7 @@ const SECTIONS = [{
 
 const OPTIONS_DEFINITIONS = [
     {alias: 'u', name: 'url', type: String},
-    {alias: 'd', name: 'depth', type: Number},
+    {alias: 'd', name: 'depth', type: String},
     {alias: 'h', name: 'help', type: String},
     {alias: 's', name: 'show', type: Boolean}
 ];
@@ -52,7 +52,9 @@ const {url} = OPTIONS;
 const {depth} = OPTIONS;
 const {show} = OPTIONS;
 
-if (url && depth) {
+if (isNaN(depth)) {
+    throw new Error(`Depth not a number ${depth}!`);
+} else if (url && depth) {
     adc.detect(url, depth, show).then(maxDepth => {
         console.log(`Max depth: ${maxDepth}. It's OK!`);
         process.exit(0);
@@ -60,7 +62,7 @@ if (url && depth) {
         console.log(err);
         process.exit(1);
     });
-} else if (url) {
+} else if (url && !depth) {
     adc.detect(url, 9999999, show).then(maxDepth => {
         console.log(`Max depth: ${maxDepth}.`);
         process.exit(0);
