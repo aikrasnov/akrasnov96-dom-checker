@@ -1,6 +1,6 @@
 {
   "name": "akrasnov96-dom-checker",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Измеритель глубины dom'a",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/aikrasnov/akrasnov96-dom-checker"
   },
   "bin": {
-    "adc": "./adc.js"
+    "adc": "./bin/cli.js"
   },
   "keywords": [
     "dom",
