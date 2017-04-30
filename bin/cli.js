@@ -27,6 +27,11 @@ const SECTIONS = [{
             description: 'Показать вычисленую глубину DOM.'
         },
         {
+            name: 'redirect',
+            alias: 's',
+            description: 'Показать цепочку редиректоров.'
+        },
+        {
             name: 'help',
             alias: 'h',
             description: 'Показать эту справку и выйти.'
@@ -38,6 +43,7 @@ const OPTIONS_DEFINITIONS = [
     {alias: 'u', name: 'url', type: String},
     {alias: 'd', name: 'depth', type: String},
     {alias: 'h', name: 'help', type: String},
+    {alias: 'r', name: 'redirect', type: Boolean},
     {alias: 's', name: 'show', type: Boolean}
 ];
 const OPTIONS = commandLineArgs(OPTIONS_DEFINITIONS);
@@ -51,11 +57,13 @@ if (OPTIONS.help !== undefined) {
 const {url} = OPTIONS;
 const {depth} = OPTIONS;
 const {show} = OPTIONS;
+const {redirect} = OPTIONS;
 
-if (isNaN(depth)) {
-    throw new Error(`Depth not a number ${depth}!`);
-} else if (url && depth) {
-    adc.detect(url, depth, show).then(maxDepth => {
+if (url && depth) {
+    if (isNaN(depth)) {
+        throw new Error(`Depth not a number ${depth}!`);
+    }
+    adc.detect(url, depth, show, redirect).then(maxDepth => {
         console.log(`Max depth: ${maxDepth}. It's OK!`);
         process.exit(0);
     }).catch(err => {
@@ -63,7 +71,7 @@ if (isNaN(depth)) {
         process.exit(1);
     });
 } else if (url && !depth) {
-    adc.detect(url, 9999999, show).then(maxDepth => {
+    adc.detect(url, 9999999, show, redirect).then(maxDepth => {
         console.log(`Max depth: ${maxDepth}.`);
         process.exit(0);
     }).catch(err => {
