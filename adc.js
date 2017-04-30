@@ -36,7 +36,12 @@ const adc = (localUrl, localDepth, localShow, localRedirect) => {
                 console.log(`Max depth: ${maxDepth} for url ${localUrl}`);
             }
             if (localRedirect) {
-                console.log(Array.from(URLS).join(' ➪➪➪ '));
+                const ARRAY_URLS = Array.from(URLS);
+                if (ARRAY_URLS.length > 1) {
+                    console.log(ARRAY_URLS.join(' ➪➪➪ '));
+                } else {
+                    console.log(`There only one url -- ${localUrl}`);
+                }
             }
             if (maxDepth > localDepth) {
                 // return 1;
